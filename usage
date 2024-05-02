@@ -1,0 +1,4 @@
+fmod provides CMake targets:
+
+find_path(FMOD_INCLUDE_DIRS "fmod/fmod.hpp")
+target_include_directories(main PRIVATE ${FMOD_INCLUDE_DIRS})

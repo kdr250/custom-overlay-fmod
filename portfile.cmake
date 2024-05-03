@@ -1,11 +1,16 @@
 vcpkg_check_linkage(ONLY_DYNAMIC_LIBRARY)
 
-set(SOURCE_PATH $ENV{VCPKG_ROOT}/custom-overlay/fmod)
-
-file(GLOB headers "${SOURCE_PATH}/include/*.h" "${SOURCE_PATH}/include/*.hpp")
+file(GLOB headers "${CMAKE_CURRENT_LIST_DIR}/include/*.h" "${CMAKE_CURRENT_LIST_DIR}/include/*.hpp" "${CMAKE_CURRENT_LIST_DIR}/include/*.cs")
 file(COPY ${headers} DESTINATION "${CURRENT_PACKAGES_DIR}/include/fmod")
 
-file(COPY "${SOURCE_PATH}/lib/libFMOD.dylib" DESTINATION "${CURRENT_PACKAGES_DIR}/lib")
-file(COPY "${SOURCE_PATH}/fmod-config.cmake" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}")
+if (WIN32)
+    file(COPY "${CMAKE_CURRENT_LIST_DIR}/lib/fmod.dll" DESTINATION "${CURRENT_PACKAGES_DIR}/bin")
+    file(COPY "${CMAKE_CURRENT_LIST_DIR}/lib/fmod_vc.lib" DESTINATION "${CURRENT_PACKAGES_DIR}/lib")
+elseif (APPLE)
+    file(COPY "${CMAKE_CURRENT_LIST_DIR}/lib/libfmod.dylib" DESTINATION "${CURRENT_PACKAGES_DIR}/lib")
+endif()
 
+file(COPY "${CMAKE_CURRENT_LIST_DIR}/fmod-config.cmake" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}")
+
+file(INSTALL "${CMAKE_CURRENT_LIST_DIR}/LICENSE" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}" RENAME copyright)
 configure_file("${CMAKE_CURRENT_LIST_DIR}/usage" "${CURRENT_PACKAGES_DIR}/share/${PORT}/usage" COPYONLY)

@@ -39,11 +39,7 @@ FMODをvcpkgのcustom overlayとして使えるようにするレポジトリ。
 </pre>
 ７. vcpkgでインストールする。(triplet指定などは適宜指定すること)<br>
 ```
-# Mac
 vcpkg install fmod --overlay-ports=Your/Path/To/custom-overlay
-
-# Windows (PowerShell)
-vcpkg install fmod --overlay-ports=Your\Path\To\custom-overlay
 ```
 
 8. 以下のusageが表示されればインストールできたはず。<br>

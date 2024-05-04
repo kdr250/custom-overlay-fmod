@@ -1,13 +1,13 @@
 # custom-overlay-fmod
-FMODをvcpkgのcustom overlayとして使えるようにするレポジトリ。
+FMODのcore APIをvcpkgのcustom overlayとして使えるようにするレポジトリ。
 
 ## Install
-1. FMODをダウンロード、解凍。
+1. [FMOD](https://www.fmod.com/download)をダウンロード、解凍。
 2. 任意のディレクトリに、vcpkgのcustom overlay用のディレクトリを作成。<br>
   `mkdir custom-overlay && cd custom-overlay`
 4. 本プロジェクトをgit cloneする。<br>
   `git clone https://github.com/kdr250/custom-overlay-fmod.git fmod`
-5. ダウンロードおよび解凍したFMODのファイルを所定の位置にコピーする。<br>
+5. 解凍したFMODのファイルを所定の位置にコピーする。<br>
   FMOD Programmers API/api/core/inc内のファイルを、このプロジェクトのinclude内にコピー。<br>
   FMOD Programmers API/api/core/lib内のファイルを、このプロジェクトのlib内にコピー。
 6. 最終的に以下のようなディレクトリ構成になる。
@@ -49,7 +49,7 @@ target_link_libraries(main PRIVATE FMOD::FMOD)
 </pre>
 
 9. あとはFMODを使いたいプロジェクトのCMakeLists.txtでfind_packageすれば良い。
-10. FMOD Studio APIも使いたい場合は[custom-overlay-fmod-studio](https://github.com/kdr250/custom-overlay-fmod-studio)もインストーすること。
+10. FMOD Studio APIも使いたい場合は[custom-overlay-fmod-studio](https://github.com/kdr250/custom-overlay-fmod-studio)もインストールすること。
 
 ## 参考にしたURL
 [チュートリアル: vcpkg を使用してライブラリをパッケージ化する](https://learn.microsoft.com/ja-jp/vcpkg/get_started/get-started-packaging?pivots=shell-bash)<br>

@@ -22,7 +22,11 @@ if (WIN32)
 elseif (APPLE)
     set_target_properties(
         FMOD::FMOD PROPERTIES
-        IMPORTED_IMPLIB "${FMOD_BASE_DIR}/lib/libfmod.dylib"
+        IMPORTED_IMPLIB_DEBUG "${FMOD_BASE_DIR}/debug/lib/libfmod.dylib"
+    )
+    set_target_properties(
+        FMOD::FMOD PROPERTIES
+        IMPORTED_IMPLIB_RELEASE "${FMOD_BASE_DIR}/lib/libfmod.dylib"
     )
 endif()
 
